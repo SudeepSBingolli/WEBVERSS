@@ -74,21 +74,24 @@ export default function ResearchPage() {
   return (
     <div className="bg-white">
 
-      {/* HERO */}
-      <section className="relative overflow-hidden text-white">
+      {/* HERO SECTION */}
+      <section className="relative overflow-hidden text-white min-h-screen flex items-center justify-center">
 
-        {/* ONLY IMAGE (no overlays) */}
+        {/* ✅ BACKGROUND IMAGE */}
         <div
-          className="absolute inset-0 bg-cover bg-center scale-105"
+          className="absolute inset-0 bg-cover bg-center -z-10"
           style={{
             backgroundImage:
-              "url('https://imgs.search.brave.com/ZVA_g4hOYna0PZgo6HQKRacOqbMeqhfQgNGfODbpIxU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hZG1pc3Npb25rYXJvLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAyMy8wMi9NYW5hZ2Vt/ZW50LXF1b3RhLWFk/bWlzc2lvbi1pbi1T/SkItSW5zdGl0dXRl/LW9mLVRlY2hub2xv/Z3ktQmFuZ2Fsb3JlLmpwZw')",
+              "url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')",
           }}
         />
 
-        {/* OPTIONAL LIGHT PATTERN */}
+        {/* ✅ DARK OVERLAY FOR TEXT VISIBILITY */}
+        <div className="absolute inset-0 bg-black/50 -z-10" />
+
+        {/* OPTIONAL PATTERN */}
         <div
-          className="absolute inset-0 opacity-10"
+          className="absolute inset-0 opacity-10 -z-10"
           style={{
             backgroundImage: "radial-gradient(white 1px, transparent 1px)",
             backgroundSize: "28px 28px",
@@ -100,20 +103,25 @@ export default function ResearchPage() {
           <FadeIn>
             <p className="font-serif italic text-xl mb-4">Jai Shri Gurudev</p>
 
-            {/* ⚠️ IMPORTANT: text shadow for visibility */}
             <h1 className="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
               Research & Innovation at SJBIT
             </h1>
 
-            <p className="text-lg md:text-xl text-white max-w-3xl mx-auto drop-shadow">
+            <p className="text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
               Driving technological advancements and impactful solutions for society
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#areas" className="px-8 py-3.5 bg-white text-black font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition">
+              <Link
+                href="#areas"
+                className="px-8 py-3.5 bg-white text-black font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition"
+              >
                 Explore Research Areas
               </Link>
-              <Link href="#publications" className="px-8 py-3.5 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white/10 transition">
+              <Link
+                href="#publications"
+                className="px-8 py-3.5 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white/10 transition"
+              >
                 View Publications
               </Link>
             </div>
@@ -121,7 +129,7 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      {/* REST SAME */}
+      {/* INTRO */}
       <section className="py-20 text-center">
         <FadeIn>
           <p className="max-w-3xl mx-auto text-gray-700 text-lg">
@@ -130,6 +138,7 @@ export default function ResearchPage() {
         </FadeIn>
       </section>
 
+      {/* RESEARCH AREAS */}
       <section id="areas" className="py-24 bg-[#FFF7ED]">
         <div className="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {areas.map((a, i) => (
