@@ -74,10 +74,10 @@ export default function ResearchPage() {
   return (
     <div className="bg-white">
 
-      {/* HERO SECTION */}
+      {/* HERO */}
       <section className="relative overflow-hidden text-white">
 
-        {/* Background Image */}
+        {/* ONLY IMAGE (no overlays) */}
         <div
           className="absolute inset-0 bg-cover bg-center scale-105"
           style={{
@@ -86,10 +86,7 @@ export default function ResearchPage() {
           }}
         />
 
-        {/* ✅ DARK OVERLAY (FIXED — no yellow) */}
-        <div className="absolute inset-0 bg-black/50" />
-
-        {/* Pattern Overlay */}
+        {/* OPTIONAL LIGHT PATTERN */}
         <div
           className="absolute inset-0 opacity-10"
           style={{
@@ -98,22 +95,25 @@ export default function ResearchPage() {
           }}
         />
 
-        {/* Content */}
+        {/* CONTENT */}
         <div className="relative max-w-7xl mx-auto px-6 py-28 text-center">
           <FadeIn>
             <p className="font-serif italic text-xl mb-4">Jai Shri Gurudev</p>
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
+
+            {/* ⚠️ IMPORTANT: text shadow for visibility */}
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-6 drop-shadow-lg">
               Research & Innovation at SJBIT
             </h1>
-            <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
+
+            <p className="text-lg md:text-xl text-white max-w-3xl mx-auto drop-shadow">
               Driving technological advancements and impactful solutions for society
             </p>
 
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#areas" className="px-8 py-3.5 bg-white text-[#E36A0A] font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition">
+              <Link href="#areas" className="px-8 py-3.5 bg-white text-black font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition">
                 Explore Research Areas
               </Link>
-              <Link href="#publications" className="px-8 py-3.5 border-2 border-white/70 text-white font-semibold rounded-2xl hover:bg-white/10 transition">
+              <Link href="#publications" className="px-8 py-3.5 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white/10 transition">
                 View Publications
               </Link>
             </div>
@@ -121,17 +121,15 @@ export default function ResearchPage() {
         </div>
       </section>
 
-      {/* OVERVIEW */}
+      {/* REST SAME */}
       <section className="py-20 text-center">
         <FadeIn>
           <p className="max-w-3xl mx-auto text-gray-700 text-lg">
-            SJBIT fosters a vibrant research ecosystem where faculty and students collaborate on cutting-edge innovations,
-            industry partnerships, and socially impactful solutions.
+            SJBIT fosters a vibrant research ecosystem where faculty and students collaborate on cutting-edge innovations.
           </p>
         </FadeIn>
       </section>
 
-      {/* RESEARCH AREAS */}
       <section id="areas" className="py-24 bg-[#FFF7ED]">
         <div className="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {areas.map((a, i) => (
@@ -144,18 +142,6 @@ export default function ResearchPage() {
             </FadeIn>
           ))}
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="py-24 bg-gray-900 text-white text-center">
-        <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
-            Be a Part of Innovation at SJBIT
-          </h2>
-          <Link href="/contact" className="px-8 py-3.5 bg-white text-black rounded-2xl font-semibold">
-            Join Research Programs
-          </Link>
-        </FadeIn>
       </section>
 
     </div>
