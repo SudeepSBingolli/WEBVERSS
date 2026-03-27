@@ -28,7 +28,9 @@ const moreLinksRouteMap = {
     'Contact': '/contact',   // ✅ ADD THIS
     'Admissions': '/admissions',
     'Alumni': '/alumni',
-    'Research':'/research'
+    'Research':'/research',
+    'Academics':'/academics',
+    'Students': '/students'
 };
 
 function getMoreLinkHref(item) {
