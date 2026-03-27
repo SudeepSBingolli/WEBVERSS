@@ -70,31 +70,11 @@ const areas = [
   { title: "Cybersecurity", desc: "Network security, cryptography and ethical hacking.", icon: "🔐" },
 ];
 
-const labs = [
-  { name: "AI & ML Lab", desc: "GPU cluster, deep learning workstations & research datasets.", tags: ["NVIDIA GPUs", "TensorFlow", "Research"] },
-  { name: "Robotics Lab", desc: "Industrial robotic arms, ROS platforms & 3D printing.", tags: ["ROS", "Automation", "Prototyping"] },
-  { name: "Embedded Systems Lab", desc: "VLSI, IoT boards, sensors & real-time testing.", tags: ["VLSI", "IoT", "Embedded"] },
-  { name: "Innovation & Incubation Center", desc: "Startup mentorship, seed funding & patent support.", tags: ["Startups", "Patents", "Mentors"] },
-];
-
-const projects = [
-  { title: "Smart Traffic Management", domain: "IoT", desc: "AI-driven traffic control reducing congestion by 30%." },
-  { title: "Agriculture Drone", domain: "Robotics", desc: "Autonomous drone for precision farming & crop monitoring." },
-  { title: "Cyber Threat Detector", domain: "Cybersecurity", desc: "ML model detecting anomalies in real-time network traffic." },
-];
-
-const steps = [
-  { t: "Idea & Innovation", d: "Brainstorming real-world problems with faculty mentors." },
-  { t: "Research & Experimentation", d: "Literature review, simulations and lab testing." },
-  { t: "Development", d: "Prototype building using advanced labs and tools." },
-  { t: "Real-world Application", d: "Industry deployment, patents and publications." },
-];
-
 export default function ResearchPage() {
   return (
     <div className="bg-white">
 
-      {/* HERO SECTION WITH IMAGE */}
+      {/* HERO SECTION */}
       <section className="relative overflow-hidden text-white">
 
         {/* Background Image */}
@@ -106,8 +86,8 @@ export default function ResearchPage() {
           }}
         />
 
-        {/* Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[#E36A0A]/80 via-[#F59E0B]/70 to-[#E36A0A]/80" />
+        {/* ✅ DARK OVERLAY (FIXED — no yellow) */}
+        <div className="absolute inset-0 bg-black/50" />
 
         {/* Pattern Overlay */}
         <div
@@ -142,7 +122,7 @@ export default function ResearchPage() {
       </section>
 
       {/* OVERVIEW */}
-      <section className="py-20 bg-white text-center">
+      <section className="py-20 text-center">
         <FadeIn>
           <p className="max-w-3xl mx-auto text-gray-700 text-lg">
             SJBIT fosters a vibrant research ecosystem where faculty and students collaborate on cutting-edge innovations,
@@ -167,12 +147,12 @@ export default function ResearchPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-24 bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-center">
+      <section className="py-24 bg-gray-900 text-white text-center">
         <FadeIn>
           <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
             Be a Part of Innovation at SJBIT
           </h2>
-          <Link href="/contact" className="px-8 py-3.5 bg-white text-[#E36A0A] rounded-2xl font-semibold">
+          <Link href="/contact" className="px-8 py-3.5 bg-white text-black rounded-2xl font-semibold">
             Join Research Programs
           </Link>
         </FadeIn>
