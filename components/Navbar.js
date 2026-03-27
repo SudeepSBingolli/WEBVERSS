@@ -7,9 +7,18 @@ const navLinks = [
     { name: 'Home', href: '#home' },
     { name: 'About', href: '#about' },
     { name: 'Programs', href: '#programs' },
-    { name: 'Campus', href: '#campus' },
-    { name: 'Admissions', href: '#admissions' },
-    { name: 'Contact', href: '#contact' },
+];
+
+const moreLinks = [
+    'Departments',
+    'Academics',
+    'Admissions',
+    'Placements',
+    'Research',
+    'Campus Life',
+    'Students',
+    'Alumni',
+    'Contact',
 ];
 
 export default function Navbar() {
@@ -36,6 +45,7 @@ export default function Navbar() {
                             src="/logo.jpeg"
                             alt="SJBIT Logo"
                             fill
+                            sizes="90px"
                             className="object-contain"
                         />
                     </div>
@@ -51,21 +61,48 @@ export default function Navbar() {
                 </Link>
 
                 {/* Links */}
-                <ul className="hidden lg:flex items-center gap-1">
+                <ul className="hidden lg:flex items-center gap-2 relative">
+
+                    {/* Main Links */}
                     {navLinks.map(link => (
                         <li key={link.name}>
                             <Link
                                 href={link.href}
                                 onClick={() => setActive(link.name)}
                                 className={`px-4 py-2 rounded-xl text-sm font-medium transition ${active === link.name
-                                    ? 'text-white bg-[#E36A0A]'
-                                    : 'text-gray-700 hover:text-[#E36A0A] hover:bg-[#FFF7ED]'
+                                        ? 'text-white bg-[#E36A0A]'
+                                        : 'text-gray-700 hover:text-[#E36A0A] hover:bg-[#FFF7ED]'
                                     }`}
                             >
                                 {link.name}
                             </Link>
                         </li>
                     ))}
+
+                    {/* MORE DROPDOWN */}
+                    <li className="relative group">
+                        <button className="px-4 py-2 rounded-xl text-sm font-medium text-gray-700 hover:text-[#E36A0A] hover:bg-[#FFF7ED] transition flex items-center gap-1">
+                            More
+                            <span className="text-xs transition group-hover:rotate-180">▾</span>
+                        </button>
+
+                        {/* Dropdown Menu */}
+                        <div className="absolute left-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-orange-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <ul className="py-2">
+                                {moreLinks.map((item, index) => (
+                                    <li key={index}>
+                                        <Link
+                                            href={`#${item.toLowerCase().replace(/\s/g, '')}`}
+                                            className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#E36A0A] transition"
+                                        >
+                                            {item}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    </li>
+
                 </ul>
 
                 {/* CTA */}

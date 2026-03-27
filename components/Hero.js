@@ -1,7 +1,10 @@
 'use client';
 import Image from 'next/image';
+import { useState } from 'react';
 
 export default function Hero() {
+  const [heroImageSrc, setHeroImageSrc] = useState('/campus.jpeg');
+
   const coreValues = [
     'Humanity', 'Honesty', 'Integrity', 'Teamwork', 'Continuous Learning', 'Innovation'
   ];
@@ -82,7 +85,15 @@ export default function Hero() {
           {/* RIGHT VISUAL */}
           <div className="relative animate-fade-in-right">
             <div className="relative mx-auto w-full max-w-[520px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-orange-900/10 border border-[#F59E0B]/20">
-              <Image src="/campus.jpg" alt="SJBIT Campus" fill className="object-cover" priority />
+              <Image
+                src={heroImageSrc}
+                alt="SJBIT Campus"
+                fill
+                sizes="(max-width: 1024px) 100vw, 520px"
+                className="object-cover"
+                priority
+                onError={() => setHeroImageSrc('/logo.jpeg')}
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-[#E36A0A]/20 via-transparent to-transparent" />
             </div>
 

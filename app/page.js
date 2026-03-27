@@ -1,11 +1,15 @@
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
+import About from '@/components/About';
+import ProgramsSection from '@/components/ProgramsSection';
 
 export default function Home() {
   return (
     <main className="min-h-screen">
       <Navbar />
       <Hero />
+      <About/>
+      <ProgramsSection/>
 
       {/* Placeholder section so you can test scroll behavior on the navbar */}
       <section className="bg-white py-32 px-8 text-center">
@@ -18,5 +22,6 @@ export default function Home() {
         </p>
       </section>
     </main>
+
   );
 }
