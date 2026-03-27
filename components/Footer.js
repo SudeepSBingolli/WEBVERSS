@@ -76,10 +76,10 @@ export default function Footer() {
                             {/* Social Icons */}
                             <div className="flex gap-3 justify-center lg:justify-start">
                                 {[
-                                    { name: 'facebook', emoji: '👍', label: 'Facebook' },
-                                    { name: 'instagram', emoji: '📷', label: 'Instagram' },
-                                    { name: 'linkedin', emoji: '💼', label: 'LinkedIn' },
-                                    { name: 'youtube', emoji: '▶️', label: 'YouTube' }
+                                    { name: 'facebook', emoji: '�', label: 'Facebook' },
+                                    { name: 'instagram', emoji: '📸', label: 'Instagram' },
+                                    { name: 'linkedin', emoji: '🔗', label: 'LinkedIn' },
+                                    { name: 'youtube', emoji: '🎬', label: 'YouTube' }
                                 ].map((social) => (
                                     <a
                                         key={social.name}
