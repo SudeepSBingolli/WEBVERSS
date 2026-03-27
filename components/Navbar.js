@@ -126,9 +126,9 @@ export default function Navbar() {
 
                 {/* CTA */}
                 <div className="hidden lg:block">
-                    <button className="px-6 py-2.5 rounded-full bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-sm font-semibold shadow-md shadow-orange-200 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                    <Link href="/enroll" className="inline-block px-6 py-2.5 rounded-full bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-sm font-semibold shadow-md shadow-orange-200 hover:shadow-lg hover:-translate-y-0.5 transition-all">
                         Enroll Now
-                    </button>
+                    </Link>
                 </div>
 
                 {/* Mobile Toggle */}
@@ -170,9 +170,9 @@ export default function Navbar() {
                             );
                         })}
                         <li className="pt-2">
-                            <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-sm font-semibold">
+                            <Link href="/enroll" onClick={() => setOpen(false)} className="block w-full py-3 rounded-full bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-sm font-semibold text-center">
                                 Enroll Now
-                            </button>
+                            </Link>
                         </li>
                     </ul>
                 </div>

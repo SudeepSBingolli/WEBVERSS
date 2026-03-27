@@ -31,7 +31,7 @@ export default function AcademicsPage() {
             { label: "Students Enrolled", value: "4000+" },
             { label: "Placement Rate", value: "85%" },
           ].map((item, i) => (
-            <div key={i} className="bg-white shadow-md rounded-xl p-6 text-center border border-orange-100">
+            <div key={i} className="academics-animated-border bg-white shadow-md rounded-xl p-6 text-center">
               <h3 className="text-3xl font-bold text-[#E36A0A]">{item.value}</h3>
               <p className="text-gray-600">{item.label}</p>
             </div>
@@ -42,9 +42,9 @@ export default function AcademicsPage() {
         <div className="grid md:grid-cols-2 gap-10 mb-20">
 
           {/* UG */}
-          <div className="bg-white border border-orange-100 rounded-2xl p-8 shadow-sm">
+          <div className="academics-animated-border bg-white rounded-2xl p-8 shadow-sm">
             <Image
-              src="public/pg.jpeg"
+              src="/ug.jpeg"
               alt="Undergraduate Programs"
               width={600}
               height={400}
@@ -64,9 +64,9 @@ export default function AcademicsPage() {
           </div>
 
           {/* PG */}
-          <div className="bg-white border border-orange-100 rounded-2xl p-8 shadow-sm">
+          <div className="academics-animated-border bg-white rounded-2xl p-8 shadow-sm">
             <Image
-              src="public/pg.jpeg"
+              src="/pg.jpeg"
               alt="Postgraduate Programs"
               width={600}
               height={400}
@@ -87,7 +87,7 @@ export default function AcademicsPage() {
         </div>
 
         {/* 📊 Academic Structure (Analytical Section) */}
-        <div className="bg-white rounded-2xl p-10 border border-orange-100 mb-20">
+        <div className="academics-animated-border bg-white rounded-2xl p-10 mb-20">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">
             Academic Structure & Methodology
           </h2>
@@ -139,11 +139,11 @@ export default function AcademicsPage() {
           </div>
 
           <Image
-            src="/images/classroom.jpg"
+            src="/mba.jpeg"
             alt="Smart Classroom"
             width={600}
             height={400}
-            className="rounded-2xl object-cover"
+            className="academics-animated-border rounded-2xl object-cover"
           />
         </div>
 
