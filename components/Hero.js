@@ -82,7 +82,7 @@ export default function Hero() {
           {/* RIGHT VISUAL */}
           <div className="relative animate-fade-in-right">
             <div className="relative mx-auto w-full max-w-[520px] aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl shadow-orange-900/10 border border-[#F59E0B]/20">
-              <Image src="/campus.jpg" alt="SJBIT Campus" fill className="object-cover" priority />
+              <Image src="/campus.jpeg" alt="SJBIT Campus" fill className="object-cover" priority />
               <div className="absolute inset-0 bg-gradient-to-t from-[#E36A0A]/20 via-transparent to-transparent" />
             </div>
 
