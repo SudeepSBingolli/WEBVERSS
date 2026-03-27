@@ -1,5 +1,6 @@
 'use client';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
 
 export default function Hero() {
@@ -72,14 +73,22 @@ export default function Hero() {
             </div>
 
             {/* CTAs */}
+            
             <div className="flex flex-wrap gap-4 pt-4">
+              <Link href={'/departments'}>
               <button className="px-7 py-3.5 rounded-2xl bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white font-semibold shadow-lg shadow-orange-200 hover:shadow-xl hover:-translate-y-0.5 transition-all">
                 Explore Programs
               </button>
+              </Link>
+              <Link href={'/campus-life'}>
               <button className="px-7 py-3.5 rounded-2xl border-2 border-[#E36A0A] text-[#E36A0A] font-semibold hover:bg-[#FFF7ED] transition-all">
                 Visit Campus
               </button>
+              </Link>
+              
             </div>
+            
+            
           </div>
 
           {/* RIGHT VISUAL */}
