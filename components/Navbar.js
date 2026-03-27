@@ -26,6 +26,8 @@ const moreLinksRouteMap = {
     'Departments': '/departments',
     'Campus Life': '/campus-life',
     'Contact': '/contact',   // ✅ ADD THIS
+    'Admissions': '/admissions',
+    'Alumni': '/alumni'
 };
 
 function getMoreLinkHref(item) {
