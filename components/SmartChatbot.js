@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef, useEffect, useMemo, useCallback } from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 
 const INITIAL_MESSAGE = { id: 1, text: 'Hello! 👋 I\'m here to help you navigate SJBIT. What would you like to know?', sender: 'bot', timestamp: new Date() };
@@ -33,6 +33,7 @@ export default function SmartChatbot() {
   const [messages, setMessages] = useState([INITIAL_MESSAGE]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const messageIdRef = useRef(2);
   const messagesEndRef = useRef(null);
   const router = useRouter();
 
@@ -54,49 +55,84 @@ export default function SmartChatbot() {
     return null;
   }, []);
 
-  const handleSendMessage = useCallback((e) => {
-    e.preventDefault();
-    if (!inputValue.trim()) return;
+  const createMessage = useCallback((text, sender, extra = {}) => {
+    const nextId = messageIdRef.current;
+    messageIdRef.current += 1;
 
-    const userMessage = { id: messages.length + 1, text: inputValue, sender: 'user', timestamp: new Date() };
-    setMessages(prev => [...prev, userMessage]);
+    return {
+      id: nextId,
+      text,
+      sender,
+      timestamp: new Date(),
+      ...extra
+    };
+  }, []);
+
+  const requestBotReply = useCallback(async (text, history) => {
+    const response = await fetch('/api/chat', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: text,
+        history: history.map((msg) => ({ text: msg.text, sender: msg.sender }))
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to get chatbot response');
+    }
+
+    return response.json();
+  }, []);
+
+  const sendMessage = useCallback(async (rawText) => {
+    const text = rawText.trim();
+    if (!text || isTyping) return;
+
+    const userMessage = createMessage(text, 'user');
+    const historyWithUser = [...messages, userMessage];
+
+    setMessages((prev) => [...prev, userMessage]);
     setInputValue('');
     setIsTyping(true);
 
-    setTimeout(() => {
-      const response = findBestMatch(inputValue);
-      const botMessage = {
-        id: messages.length + 2,
-        text: response?.text || '❓ Sorry, I can help with admissions, placements, departments, contact, alumni, or campus life.',
-        sender: 'bot',
-        timestamp: new Date(),
-        link: response?.link,
-        linkText: response?.linkText
-      };
-      setMessages(prev => [...prev, botMessage]);
+    try {
+      const aiResponse = await requestBotReply(text, historyWithUser);
+      const botMessage = createMessage(
+        aiResponse?.reply || '❓ Sorry, I can help with admissions, placements, departments, contact, alumni, or campus life.',
+        'bot',
+        {
+          link: aiResponse?.link || undefined,
+          linkText: aiResponse?.linkText || undefined
+        }
+      );
+      setMessages((prev) => [...prev, botMessage]);
+    } catch {
+      const fallback = findBestMatch(text);
+      const botMessage = createMessage(
+        fallback?.text || '❓ Sorry, I can help with admissions, placements, departments, contact, alumni, or campus life.',
+        'bot',
+        {
+          link: fallback?.link,
+          linkText: fallback?.linkText
+        }
+      );
+      setMessages((prev) => [...prev, botMessage]);
+    } finally {
       setIsTyping(false);
-    }, 800);
-  }, [inputValue, messages.length, findBestMatch]);
+    }
+  }, [createMessage, findBestMatch, isTyping, messages, requestBotReply]);
+
+  const handleSendMessage = useCallback((e) => {
+    e.preventDefault();
+    sendMessage(inputValue);
+  }, [inputValue, sendMessage]);
 
   const handleQuickButton = useCallback((keyword) => {
-    const userMessage = { id: messages.length + 1, text: keyword, sender: 'user', timestamp: new Date() };
-    setMessages(prev => [...prev, userMessage]);
-    setIsTyping(true);
-
-    setTimeout(() => {
-      const response = findBestMatch(keyword);
-      const botMessage = {
-        id: messages.length + 2,
-        text: response?.text || '❓ Sorry, I couldn\'t find information about that.',
-        sender: 'bot',
-        timestamp: new Date(),
-        link: response?.link,
-        linkText: response?.linkText
-      };
-      setMessages(prev => [...prev, botMessage]);
-      setIsTyping(false);
-    }, 800);
-  }, [messages.length, findBestMatch]);
+    sendMessage(keyword);
+  }, [sendMessage]);
 
   const handleNavigate = useCallback((link) => {
     router.push(link);
@@ -164,11 +200,13 @@ export default function SmartChatbot() {
                 type="text"
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
+                disabled={isTyping}
                 placeholder="Ask about admissions, placements..."
                 className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-[#E36A0A]"
               />
               <button
                 type="submit"
+                disabled={isTyping || !inputValue.trim()}
                 className="bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white rounded-full p-2 hover:shadow-lg transition"
               >
                 <span className="text-lg">→</span>

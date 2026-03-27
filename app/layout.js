@@ -1,6 +1,7 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import SmartChatbot from "@/components/SmartChatbot";
+import Background3D from "@/components/Background3D";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,8 +24,9 @@ export default function RootLayout({ children }) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
-        {children}
+      <body className="relative min-h-full flex flex-col">
+        <Background3D />
+        <main className="relative z-10 flex-1">{children}</main>
         <SmartChatbot />
       </body>
     </html>

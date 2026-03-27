@@ -96,7 +96,15 @@ Create a `.env.local` file in the root directory:
 ```bash
 # .env.local
 NEXT_PUBLIC_API_URL=http://localhost:3000
+
+# AI Chatbot (required for full AI responses)
+OPENAI_API_KEY=your_api_key_here
+# Optional: OpenAI-compatible endpoint and model
+OPENAI_BASE_URL=https://api.openai.com/v1
+OPENAI_MODEL=gpt-4o-mini
 ```
+
+If `OPENAI_API_KEY` is not set, the chatbot still works with limited keyword-based fallback replies.
 
 ### Step 4: Verify Installation
 
