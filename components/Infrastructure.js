@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const heroFacilities = [
   {
-    src: "/library.jpg",
+    src: "https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2022/08/1-scaled.jpg",
     alt: "Central Library",
     title: "Central Library",
     description:
@@ -22,7 +22,7 @@ const heroFacilities = [
     delay: 0,
   },
   {
-    src: "/hostel.jpg",
+    src: "https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2021/07/hostel-dept-banner-2021-1a.jpg?resize=1536%2C554&ssl=1",
     alt: "Hostel & Residential Life",
     title: "Residential Life",
     description:
@@ -36,7 +36,7 @@ const heroFacilities = [
     delay: 1,
   },
   {
-    src: "/sports.jpg",
+    src: "https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2021/07/sports-dept-banner-2021-1a.jpg?resize=1536%2C554&ssl=1",
     alt: "Sports Complex",
     title: "Sports Complex",
     description:
@@ -50,7 +50,7 @@ const heroFacilities = [
     delay: 2,
   },
   {
-    src: "/cafeteria.jpg",
+    src: "https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2024/01/SJBIT-Inter-College-Coding-Competition6.jpeg?resize=720%2C480&ssl=1",
     alt: "Cafeteria",
     title: "Cafeteria & Food Court",
     description:
