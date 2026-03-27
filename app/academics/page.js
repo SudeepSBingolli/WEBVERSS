@@ -66,7 +66,7 @@ export default function AcademicsPage() {
           {/* PG */}
           <div className="bg-white border border-orange-100 rounded-2xl p-8 shadow-sm">
             <Image
-              src="/images/pg-program.jpg"
+              src="public/pg.jpeg"
               alt="Postgraduate Programs"
               width={600}
               height={400}
