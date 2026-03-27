@@ -8,6 +8,7 @@ const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Programs', href: '/programs' },
+    { name: 'Campus Life', href: '/campus-life' },
 ];
 
 const moreLinks = [
