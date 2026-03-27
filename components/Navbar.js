@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -10,17 +10,27 @@ const navLinks = [
     { name: 'Programs', href: '/programs' },
 ];
 
-const moreLinksData = [
-    { label: 'Departments', href: '/departments' },
-    { label: 'Academics', href: '/academics' },
-    { label: 'Admissions', href: '/admissions' },
-    { label: 'Placements', href: '/placements' },
-    { label: 'Research', href: '/research' },
-    { label: 'Campus Life', href: '/campus-life' },
-    { label: 'Students', href: '/students' },
-    { label: 'Alumni', href: '/alumni' },
-    { label: 'Contact', href: '/contact' },
+const moreLinks = [
+    'Departments',
+    'Academics',
+    'Admissions',
+    'Placements',
+    'Research',
+    'Campus Life',
+    'Students',
+    'Alumni',
+    'Contact',
 ];
+
+const moreLinksRouteMap = {
+    'Departments': '/departments',
+    'Campus Life': '/campus-life',
+    'Contact': '/contact',   // ✅ ADD THIS
+};
+
+function getMoreLinkHref(item) {
+    return moreLinksRouteMap[item] ?? `#${item.toLowerCase().replace(/\s/g, '')}`;
+}
 
 export default function Navbar() {
     const [open, setOpen] = useState(false);
@@ -29,7 +39,7 @@ export default function Navbar() {
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10);
-        window.addEventListener('scroll', onScroll, { passive: true });
+        window.addEventListener('scroll', onScroll);
         return () => window.removeEventListener('scroll', onScroll);
     }, []);
 
@@ -89,16 +99,20 @@ export default function Navbar() {
                         {/* Dropdown Menu */}
                         <div className="absolute left-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-orange-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                             <ul className="py-2">
-                                {moreLinksData.map((item) => (
-                                    <li key={item.href}>
-                                        <Link
-                                            href={item.href}
-                                            className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#E36A0A] transition"
-                                        >
-                                            {item.label}
-                                        </Link>
-                                    </li>
-                                ))}
+                                {moreLinks.map((item, index) => {
+                                    const href = getMoreLinkHref(item);
+
+                                    return (
+                                        <li key={index}>
+                                            <Link
+                                                href={href}
+                                                className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#E36A0A] transition"
+                                            >
+                                                {item}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
                             </ul>
                         </div>
                     </li>
@@ -136,6 +150,20 @@ export default function Navbar() {
                                 </Link>
                             </li>
                         ))}
+                        {moreLinks.map((item) => {
+                            const href = getMoreLinkHref(item);
+                            return (
+                                <li key={item}>
+                                    <Link
+                                        href={href}
+                                        onClick={() => setOpen(false)}
+                                        className={`block px-4 py-3 rounded-xl text-sm font-medium ${pathname === href ? 'bg-[#E36A0A] text-white' : 'text-gray-700 hover:bg-[#FFF7ED]'}`}
+                                    >
+                                        {item}
+                                    </Link>
+                                </li>
+                            );
+                        })}
                         <li className="pt-2">
                             <button className="w-full py-3 rounded-full bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-sm font-semibold">
                                 Enroll Now
