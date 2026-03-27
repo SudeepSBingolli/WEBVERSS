@@ -44,7 +44,7 @@ export default function AcademicsPage() {
           {/* UG */}
           <div className="bg-white border border-orange-100 rounded-2xl p-8 shadow-sm">
             <Image
-              src="/images/ug-program.jpg"
+              src="public/pg.jpeg"
               alt="Undergraduate Programs"
               width={600}
               height={400}
