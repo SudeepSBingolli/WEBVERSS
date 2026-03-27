@@ -135,21 +135,25 @@ export default function Footer() {
                             <div className="space-y-4">
                                 <div className="flex items-start gap-3 group">
                                     <span className="text-orange-500 mt-1">📍</span>
-                                    <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                                        Bengaluru, Karnataka, India
-                                    </p>
+                                    <div className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                                        <p>#67, BGS Health & Education City</p>
+                                        <p>Dr. Vishnuvardhan Road, Kengeri</p>
+                                        <p>Bengaluru – 560060, Karnataka</p>
+                                    </div>
                                 </div>
                                 <div className="flex items-start gap-3 group">
-                                    <span className="text-orange-500">📞</span>
-                                    <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                                        +91 XXXXX XXXXX
-                                    </p>
+                                    <span className="text-orange-500">📱</span>
+                                    <div className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                                        <p>+91-80-28612445 / 46</p>
+                                        <p>+91-6366041109</p>
+                                    </div>
                                 </div>
                                 <div className="flex items-start gap-3 group">
                                     <span className="text-orange-500">✉</span>
-                                    <p className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
-                                        info@sjbit.edu.in
-                                    </p>
+                                    <div className="text-gray-400 text-sm group-hover:text-gray-300 transition-colors">
+                                        <p>principal@sjbit.edu.in</p>
+                                        <p>admission@bgsgroup.org</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
