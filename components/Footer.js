@@ -75,14 +75,20 @@ export default function Footer() {
 
                             {/* Social Icons */}
                             <div className="flex gap-3 justify-center lg:justify-start">
-                                {['facebook', 'instagram', 'linkedin', 'youtube'].map((social) => (
+                                {[
+                                    { name: 'facebook', emoji: '👍', label: 'Facebook' },
+                                    { name: 'instagram', emoji: '📷', label: 'Instagram' },
+                                    { name: 'linkedin', emoji: '💼', label: 'LinkedIn' },
+                                    { name: 'youtube', emoji: '▶️', label: 'YouTube' }
+                                ].map((social) => (
                                     <a
-                                        key={social}
-                                        href={`#${social}`}
-                                        className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500/20 hover:scale-110 hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 group"
+                                        key={social.name}
+                                        href={`#${social.name}`}
+                                        title={social.label}
+                                        className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500/20 hover:scale-110 hover:shadow-lg hover:shadow-orange-500/25 transition-all duration-300 group text-lg"
                                     >
-                                        <span className="text-gray-400 group-hover:text-orange-400 transition-colors">
-                                            {social[0].toUpperCase()}
+                                        <span className="group-hover:scale-125 transition-transform">
+                                            {social.emoji}
                                         </span>
                                     </a>
                                 ))}
