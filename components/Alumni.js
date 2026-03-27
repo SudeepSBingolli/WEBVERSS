@@ -23,24 +23,23 @@ export default function Alumni() {
       id: 1,
       title: 'Alumni Interaction Event',
       description: 'Departments invite alumni as guest speakers to guide students and share industry knowledge.',
-      image: '/alumni1.jpg',
-      link: 'https://sjbit.edu.in/alumni-interactions/',
+      image: 'https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2022/09/Alumni3.jpeg?resize=520%2C234&ssl=1',
+    
       color: 'from-blue-600 to-blue-400'
     },
     {
       id: 2,
       title: 'Alumni Talks & Seminars',
       description: 'Alumni conduct sessions to help students understand career paths and industry expectations.',
-      image: '/alumni2.jpg',
-      link: 'https://sjbit.edu.in/alumni-interaction-4/',
+      image: 'https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2024/01/alumni222.jpg?w=1224&ssl=1',
+    
       color: 'from-purple-600 to-purple-400'
     },
     {
       id: 3,
       title: 'Career Guidance Sessions',
       description: 'Alumni guide students about placements, higher studies, and real-world challenges.',
-      image: '/alumni3.jpg',
-      link: 'https://sjbit.edu.in/alumni-interaction-2/',
+      image: 'https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2022/09/Alumni1.jpeg?w=1156&ssl=1',
       color: 'from-green-600 to-green-400'
     },
     {
@@ -48,7 +47,6 @@ export default function Alumni() {
       title: 'Alumni Meets',
       description: 'Regular alumni meets are organized to maintain strong connections with the institute.',
       image: 'https://i0.wp.com/sjbit.edu.in/wp-content/uploads/2024/01/alumnimeet2.jpg?resize=1536%2C864&ssl=1',
-      link: 'https://sjbit.edu.in/alumni/',
       color: 'from-pink-600 to-pink-400'
     }
   ];
