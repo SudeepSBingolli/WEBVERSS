@@ -1,4 +1,5 @@
 "use client"
+import Link from "next/link";
 
 const programs = [
   {
@@ -7,6 +8,7 @@ const programs = [
       'Build strong foundations in software systems, cloud technologies, and modern application development.',
     duration: '4 Years',
     intake: '180 Students',
+    url:'cse',
     placement: '96%',
     tags: ['AI', 'ML', 'Web Dev', 'Cybersecurity'],
     icon: (
@@ -22,6 +24,7 @@ const programs = [
       'Master data structures, enterprise systems, and intelligent digital platforms for real-world impact.',
     duration: '4 Years',
     intake: '120 Students',
+    url:'ise',
     placement: '95%',
     tags: ['Data Systems', 'Analytics', 'Cloud', 'DevOps'],
     icon: (
@@ -38,6 +41,7 @@ const programs = [
       'Explore circuits, embedded systems, and communication technologies powering connected industries.',
     duration: '4 Years',
     intake: '120 Students',
+    url:'ece',
     placement: '94%',
     tags: ['VLSI', 'IoT', 'Embedded', 'Signal Processing'],
     icon: (
@@ -54,6 +58,7 @@ const programs = [
       'Design and manufacture robust systems through thermodynamics, automation, and production sciences.',
     duration: '4 Years',
     intake: '120 Students',
+    url:'mechanical',
     placement: '92%',
     tags: ['CAD', 'Automation', 'Manufacturing', 'Thermal'],
     icon: (
@@ -69,6 +74,7 @@ const programs = [
       'Create sustainable infrastructure with expertise in structures, transport, and environmental engineering.',
     duration: '4 Years',
     intake: '60 Students',
+    url:'civil',
     placement: '90%',
     tags: ['Structures', 'Surveying', 'Transport', 'Sustainability'],
     icon: (
@@ -84,6 +90,7 @@ const programs = [
       'Develop intelligent solutions with deep learning, computer vision, and responsible AI practices.',
     duration: '4 Years',
     intake: '120 Students',
+    url:'ai-ml',
     placement: '97%',
     tags: ['AI', 'ML', 'NLP', 'Robotics'],
     icon: (
@@ -144,7 +151,7 @@ function ProgramCard({ program, index }) {
       </div>
 
       <button className="relative mt-6 inline-flex items-center gap-2 rounded-xl border border-[#E36A0A]/30 bg-white px-4 py-2 text-sm font-semibold text-[#E36A0A] transition-all duration-300 hover:border-[#E36A0A] hover:bg-[#E36A0A] hover:text-white hover:shadow-lg hover:shadow-orange-200/60">
-        Explore Program <span aria-hidden="true">→</span>
+        <Link href={`/departments/${program.url}`}>Explore Program <span aria-hidden="true">→</span></Link>
       </button>
     </article>
   );

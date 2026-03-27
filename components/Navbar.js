@@ -89,6 +89,7 @@ export default function Navbar() {
                         {/* Dropdown Menu */}
                         <div className="absolute left-0 top-full mt-2 w-56 bg-white rounded-2xl shadow-xl border border-orange-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                             <ul className="py-2">
+<<<<<<< HEAD
                                 {moreLinks.map((item, index) => {
                                     const isRoute = item === 'Campus Life';
                                     const href = isRoute ? '/campus-life' : `#${item.toLowerCase().replace(/\s/g, '')}`;
@@ -104,6 +105,18 @@ export default function Navbar() {
                                         </li>
                                     );
                                 })}
+=======
+                                {moreLinks.map((item, index) => (
+                                    <li key={index}>
+                                        <Link
+                                            href={`${item.toLowerCase().replace(/\s/g, '')}`}
+                                            className="block px-5 py-2.5 text-sm text-gray-700 hover:bg-[#FFF7ED] hover:text-[#E36A0A] transition"
+                                        >
+                                            {item}
+                                        </Link>
+                                    </li>
+                                ))}
+>>>>>>> ea03c37 (Created department page and also linked the program section in home page to departments)
                             </ul>
                         </div>
                     </li>
