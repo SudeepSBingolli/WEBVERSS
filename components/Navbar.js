@@ -2,11 +2,12 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Programs', href: '#programs' },
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    { name: 'Programs', href: '/programs' },
 ];
 
 const moreLinks = [
@@ -24,7 +25,7 @@ const moreLinks = [
 export default function Navbar() {
     const [open, setOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
-    const [active, setActive] = useState('Home');
+    const pathname = usePathname();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 10);
@@ -68,8 +69,7 @@ export default function Navbar() {
                         <li key={link.name}>
                             <Link
                                 href={link.href}
-                                onClick={() => setActive(link.name)}
-                                className={`px-4 py-2 rounded-xl text-sm font-medium transition ${active === link.name
+                                className={`px-4 py-2 rounded-xl text-sm font-medium transition ${pathname === link.href
                                         ? 'text-white bg-[#E36A0A]'
                                         : 'text-gray-700 hover:text-[#E36A0A] hover:bg-[#FFF7ED]'
                                     }`}
@@ -128,8 +128,8 @@ export default function Navbar() {
                             <li key={link.name}>
                                 <Link
                                     href={link.href}
-                                    onClick={() => { setActive(link.name); setOpen(false); }}
-                                    className={`block px-4 py-3 rounded-xl text-sm font-medium ${active === link.name ? 'bg-[#E36A0A] text-white' : 'text-gray-700 hover:bg-[#FFF7ED]'
+                                    onClick={() => setOpen(false)}
+                                    className={`block px-4 py-3 rounded-xl text-sm font-medium ${pathname === link.href ? 'bg-[#E36A0A] text-white' : 'text-gray-700 hover:bg-[#FFF7ED]'
                                         }`}
                                 >
                                     {link.name}
