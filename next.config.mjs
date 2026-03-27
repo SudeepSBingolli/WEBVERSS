@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  /* config options here */
   reactCompiler: true,
   images: {
     remotePatterns: [
@@ -11,6 +10,10 @@ const nextConfig = {
       {
         protocol: 'https',
         hostname: '**.wp.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'logo.clearbit.com', // ✅ ADD THIS
       },
     ],
   },

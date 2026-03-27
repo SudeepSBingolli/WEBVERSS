@@ -25,12 +25,13 @@ const moreLinks = [
 const moreLinksRouteMap = {
     'Departments': '/departments',
     'Campus Life': '/campus-life',
-    'Contact': '/contact',   // ✅ ADD THIS
+    'Contact': '/contact', 
     'Admissions': '/admissions',
     'Alumni': '/alumni',
     'Research':'/research',
     'Academics':'/academics',
-    'Students': '/students'
+    'Students': '/students',
+    'Placements': '/placements'
 };
 
 function getMoreLinkHref(item) {
