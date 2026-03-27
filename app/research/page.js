@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
 
 /* ---------- Reusable Animations ---------- */
@@ -94,150 +93,91 @@ const steps = [
 export default function ResearchPage() {
   return (
     <div className="bg-white">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-[#E36A0A] via-[#F59E0B] to-[#E36A0A] text-white">
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: "radial-gradient(white 1px,transparent 1px)", backgroundSize: "28px 28px" }} />
+
+      {/* HERO SECTION WITH IMAGE */}
+      <section className="relative overflow-hidden text-white">
+
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 bg-cover bg-center scale-105"
+          style={{
+            backgroundImage:
+              "url('https://imgs.search.brave.com/ZVA_g4hOYna0PZgo6HQKRacOqbMeqhfQgNGfODbpIxU/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9hZG1pc3Npb25rYXJvLmNv/bS93cC1jb250ZW50/L3VwbG9hZHMvMjAyMy8wMi9NYW5hZ2Vt/ZW50LXF1b3RhLWFk/bWlzc2lvbi1pbi1T/SkItSW5zdGl0dXRl/LW9mLVRlY2hub2xv/Z3ktQmFuZ2Fsb3JlLmpwZw')",
+          }}
+        />
+
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-[#E36A0A]/80 via-[#F59E0B]/70 to-[#E36A0A]/80" />
+
+        {/* Pattern Overlay */}
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: "radial-gradient(white 1px, transparent 1px)",
+            backgroundSize: "28px 28px",
+          }}
+        />
+
+        {/* Content */}
         <div className="relative max-w-7xl mx-auto px-6 py-28 text-center">
           <FadeIn>
             <p className="font-serif italic text-xl mb-4">Jai Shri Gurudev</p>
-            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">Research & Innovation at SJBIT</h1>
+            <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
+              Research & Innovation at SJBIT
+            </h1>
             <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto">
               Driving technological advancements and impactful solutions for society
             </p>
+
             <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="#areas" className="px-8 py-3.5 bg-white text-[#E36A0A] font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition">Explore Research Areas</Link>
-              <Link href="#publications" className="px-8 py-3.5 border-2 border-white/70 text-white font-semibold rounded-2xl hover:bg-white/10 transition">View Publications</Link>
+              <Link href="#areas" className="px-8 py-3.5 bg-white text-[#E36A0A] font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition">
+                Explore Research Areas
+              </Link>
+              <Link href="#publications" className="px-8 py-3.5 border-2 border-white/70 text-white font-semibold rounded-2xl hover:bg-white/10 transition">
+                View Publications
+              </Link>
             </div>
           </FadeIn>
         </div>
       </section>
 
       {/* OVERVIEW */}
-      <section className="py-20 bg-white">
-        <div className="max-w-5xl mx-auto px-6 text-center">
-          <FadeIn>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              SJBIT fosters a vibrant research ecosystem where faculty and students collaborate on cutting-edge innovations,
-              industry partnerships, and socially impactful solutions — nurturing curiosity into real-world excellence.
-            </p>
-          </FadeIn>
-        </div>
+      <section className="py-20 bg-white text-center">
+        <FadeIn>
+          <p className="max-w-3xl mx-auto text-gray-700 text-lg">
+            SJBIT fosters a vibrant research ecosystem where faculty and students collaborate on cutting-edge innovations,
+            industry partnerships, and socially impactful solutions.
+          </p>
+        </FadeIn>
       </section>
 
       {/* RESEARCH AREAS */}
       <section id="areas" className="py-24 bg-[#FFF7ED]">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 mb-4">Research Areas</h2>
-            <p className="text-center text-gray-600 mb-14">Multidisciplinary excellence across emerging technologies</p>
-          </FadeIn>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {areas.map((a, i) => (
-              <FadeIn key={a.title} delay={i * 100}>
-                <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-2xl hover:-translate-y-2 border border-gray-100 hover:border-[#E36A0A]/40 transition">
-                  <div className="text-4xl mb-4">{a.icon}</div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{a.title}</h3>
-                  <p className="text-gray-600 text-sm">{a.desc}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* LABS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn><h2 className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 mb-14">Research Labs & Centers</h2></FadeIn>
-          <div className="grid md:grid-cols-2 gap-8">
-            {labs.map((l, i) => (
-              <FadeIn key={l.name} delay={i * 120}>
-                <div className="rounded-2xl p-8 bg-gradient-to-br from-[#FFF7ED] to-white shadow-lg border border-orange-100 hover:shadow-xl transition">
-                  <h3 className="text-2xl font-bold text-[#E36A0A] mb-3">{l.name}</h3>
-                  <p className="text-gray-700 mb-4">{l.desc}</p>
-                  <div className="flex flex-wrap gap-2">
-                    {l.tags.map(t => <span key={t} className="px-3 py-1 text-xs bg-white border border-[#F59E0B]/30 text-[#E36A0A] rounded-full">{t}</span>)}
-                  </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PUBLICATIONS */}
-      <section id="publications" className="py-24 bg-[#FFF7ED]">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <FadeIn><h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-14">Publications & Achievements</h2></FadeIn>
-          <div className="grid sm:grid-cols-3 gap-8">
-            <FadeIn><div className="bg-white rounded-2xl p-10 shadow-lg"><Counter end={200} suffix="+" /><p className="mt-2 text-gray-600">Research Papers</p></div></FadeIn>
-            <FadeIn delay={100}><div className="bg-white rounded-2xl p-10 shadow-lg"><Counter end={50} suffix="+" /><p className="mt-2 text-gray-600">Conferences</p></div></FadeIn>
-            <FadeIn delay={200}><div className="bg-white rounded-2xl p-10 shadow-lg"><Counter end={30} suffix="+" /><p className="mt-2 text-gray-600">Patents Filed</p></div></FadeIn>
-          </div>
-        </div>
-      </section>
-
-      {/* COLLABORATIONS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <FadeIn>
-            <h2 className="text-3xl md:text-5xl font-extrabold text-gray-900 mb-6">Industry Collaborations</h2>
-            <p className="text-gray-600 mb-12 max-w-2xl mx-auto">Partnering with leading tech companies, research organizations and startups for impactful innovation.</p>
-          </FadeIn>
-          <div className="flex flex-wrap justify-center gap-10 opacity-80">
-            {["infosys","tcs","wipro","bosch","siemens"].map(p => (
-              <div key={p} className="w-32 h-16 bg-gray-100 rounded-xl flex items-center justify-center text-gray-500 font-semibold">{p.toUpperCase()}</div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* STUDENT PROJECTS */}
-      <section className="py-24 bg-[#FFF7ED]">
-        <div className="max-w-7xl mx-auto px-6">
-          <FadeIn><h2 className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 mb-14">Student Research & Projects</h2></FadeIn>
-          <div className="grid md:grid-cols-3 gap-8">
-            {projects.map((p,i)=>(
-              <FadeIn key={p.title} delay={i*120}>
-                <div className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl hover:-translate-y-2 transition">
-                  <span className="text-xs px-3 py-1 bg-[#E36A0A]/10 text-[#E36A0A] rounded-full">{p.domain}</span>
-                  <h3 className="text-xl font-bold mt-4 mb-2">{p.title}</h3>
-                  <p className="text-gray-600 text-sm">{p.desc}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section className="py-24 bg-white">
-        <div className="max-w-6xl mx-auto px-6">
-          <FadeIn><h2 className="text-3xl md:text-5xl font-extrabold text-center text-gray-900 mb-16">Our Research Approach</h2></FadeIn>
-          <div className="grid md:grid-cols-4 gap-8">
-            {steps.map((s,i)=>(
-              <FadeIn key={s.t} delay={i*150}>
-                <div className="text-center">
-                  <div className="w-14 h-14 mx-auto rounded-full bg-gradient-to-br from-[#E36A0A] to-[#F59E0B] text-white flex items-center justify-center font-bold text-xl mb-4">{i+1}</div>
-                  <h4 className="font-bold text-lg mb-2">{s.t}</h4>
-                  <p className="text-gray-600 text-sm">{s.d}</p>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
+        <div className="max-w-7xl mx-auto px-6 grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {areas.map((a, i) => (
+            <FadeIn key={i} delay={i * 100}>
+              <div className="bg-white p-8 rounded-2xl shadow hover:shadow-xl transition">
+                <div className="text-4xl mb-4">{a.icon}</div>
+                <h3 className="font-bold text-xl">{a.title}</h3>
+                <p className="text-gray-600 text-sm mt-2">{a.desc}</p>
+              </div>
+            </FadeIn>
+          ))}
         </div>
       </section>
 
       {/* CTA */}
       <section className="py-24 bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] text-white text-center">
         <FadeIn>
-          <h2 className="text-3xl md:text-5xl font-extrabold mb-6">Be a Part of Innovation at SJBIT</h2>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact" className="px-8 py-3.5 bg-white text-[#E36A0A] font-semibold rounded-2xl shadow-lg hover:-translate-y-0.5 transition">Join Research Programs</Link>
-            <Link href="/contact" className="px-8 py-3.5 border-2 border-white text-white font-semibold rounded-2xl hover:bg-white/10 transition">Contact Research Cell</Link>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-6">
+            Be a Part of Innovation at SJBIT
+          </h2>
+          <Link href="/contact" className="px-8 py-3.5 bg-white text-[#E36A0A] rounded-2xl font-semibold">
+            Join Research Programs
+          </Link>
         </FadeIn>
       </section>
+
     </div>
   );
 }
