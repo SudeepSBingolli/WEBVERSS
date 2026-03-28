@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Users, Globe, Handshake, Briefcase } from 'lucide-react';
 
 export default function Alumni() {
   const [mounted, setMounted] = useState(false);
@@ -12,10 +13,10 @@ export default function Alumni() {
   }, []);
 
   const stats = [
-    { label: '11,000+', description: 'Alumni', icon: '👥' },
-    { label: '50+', description: 'Countries', icon: '🌍' },
-    { label: '100+', description: 'Alumni Meets', icon: '🤝' },
-    { label: '1000+', description: 'Industry Experts', icon: '💼' }
+    { label: '11,000+', description: 'Alumni', icon: <Users className="w-8 h-8" /> },
+    { label: '50+', description: 'Countries', icon: <Globe className="w-8 h-8" /> },
+    { label: '100+', description: 'Alumni Meets', icon: <Handshake className="w-8 h-8" /> },
+    { label: '1000+', description: 'Industry Experts', icon: <Briefcase className="w-8 h-8" /> }
   ];
 
   const interactions = [
@@ -76,7 +77,7 @@ export default function Alumni() {
               }`}
               style={{ transitionDelay: mounted ? `${idx * 100}ms` : '0ms' }}
             >
-              <div className="text-5xl mb-4 group-hover:scale-125 transition-transform">{stat.icon}</div>
+              <div className="text-5xl mb-4 group-hover:scale-125 transition-transform text-[#E36A0A]">{stat.icon}</div>
               <p className="text-4xl font-black bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] bg-clip-text text-transparent mb-2">
                 {stat.label}
               </p>

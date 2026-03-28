@@ -3,6 +3,8 @@
 import React from 'react';
 import { Phone, Mail, MapPin, GraduationCap, Building2, Briefcase, Home, ShieldAlert, ArrowRight } from 'lucide-react';
 
+const GOOGLE_MAPS_URL = 'https://www.google.com/maps/search/?api=1&query=SJB+Institute+of+Technology+Kengeri+Bengaluru';
+
 export default function ContactDetails() {
   return (
     <section className="min-h-screen bg-[#fafafa] py-20 px-4 md:px-8">
@@ -34,16 +36,21 @@ export default function ContactDetails() {
               <div>
                 <h2 className="text-3xl font-bold mb-6">SJB Institute of Technology</h2>
                 <div className="space-y-6">
-                  <ContactInfo icon={<MapPin className="text-[#E36A0A]" />} label="Location" value="#67, BGS Health & Education City, Dr. Vishnuvardhan Road, Kengeri, Bengaluru – 560060" />
+                  <ContactInfo icon={<MapPin className="text-[#E36A0A]" />} label="Location" value="#67, BGS Health & Education City, Dr. Vishnuvardhan Road, Kengeri, Bengaluru - 560060" href={GOOGLE_MAPS_URL} external />
                   <div className="grid md:grid-cols-2 gap-6">
                     <ContactInfo icon={<Phone className="text-[#E36A0A]" />} label="General Inquiry" value="+91-80-28612445" href="tel:+918028612445" />
                     <ContactInfo icon={<Mail className="text-[#E36A0A]" />} label="Official Email" value="principal@sjbit.edu.in" href="mailto:principal@sjbit.edu.in" />
                   </div>
                 </div>
               </div>
-              <button className="mt-10 bg-[#E36A0A] hover:bg-white hover:text-black transition-all duration-300 w-fit px-8 py-4 rounded-full font-bold flex items-center gap-2 group">
+              <a
+                href={GOOGLE_MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-10 bg-[#E36A0A] hover:bg-white hover:text-black transition-all duration-300 w-fit px-8 py-4 rounded-full font-bold flex items-center gap-2 group"
+              >
                 Find on Google Maps <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </button>
+              </a>
             </div>
             {/* Background Decorative Element */}
             <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-[#E36A0A] rounded-full blur-[120px] opacity-20" />
@@ -95,13 +102,20 @@ export default function ContactDetails() {
 
 /* --- Reusable UI Sub-components --- */
 
-const ContactInfo = React.memo(({ icon, label, value, href }) => (
+const ContactInfo = React.memo(({ icon, label, value, href, external }) => (
   <div className="flex gap-4 group">
     <div className="mt-1">{icon}</div>
     <div>
       <p className="text-xs text-slate-400 uppercase font-bold tracking-wider mb-1">{label}</p>
       {href ? (
-        <a href={href} className="text-lg font-medium hover:text-[#E36A0A] transition-colors">{value}</a>
+        <a
+          href={href}
+          target={external ? '_blank' : undefined}
+          rel={external ? 'noopener noreferrer' : undefined}
+          className="text-lg font-medium hover:text-[#E36A0A] transition-colors"
+        >
+          {value}
+        </a>
       ) : (
         <p className="text-lg font-medium text-slate-200 leading-snug">{value}</p>
       )}

@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* Smooth scroll behavior for premium feel */
+html {
+  scroll-behavior: smooth;
+}
+
+html.high-contrast {
+  filter: contrast(1.15) saturate(1.05);
+}
+
+html.high-contrast body {
+  background: #fff;
+}
+
+html.high-contrast a,
+html.high-contrast button {
+  outline-color: #111827;
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -77,4 +95,95 @@
 
 .academics-animated-border:hover {
   transform: translateY(-3px);
+}
+
+/* Premium animations */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(227, 106, 10, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(227, 106, 10, 0.6);
+  }
+}
+
+.animate-slide-down {
+  animation: slideDown 0.6s ease-out;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.5s ease-out;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-colors duration-200;
+}
+
+/* Premium scroll bar */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(to bottom, #E36A0A, #F59E0B);
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(to bottom, #C05A08, #E36A0A);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }

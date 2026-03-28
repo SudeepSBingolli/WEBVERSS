@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 export const metadata = {
-  title: 'Academics - SJB Institute of Technology',
-  description: 'SJBIT Academic structure, curriculum, calendar, and policies.',
+  title: 'Admissions - SJB Institute of Technology',
+  description: 'SJBIT admission process, programs, eligibility, and guidance.',
 };
 
 export default function AcademicsPage() {
@@ -44,7 +44,7 @@ export default function AcademicsPage() {
           {/* UG */}
           <div className="bg-white border border-orange-100 rounded-2xl p-5 sm:p-8 shadow-sm">
             <Image
-              src="/images/ug-program.jpg"
+              src="/ug.jpeg"
               alt="Undergraduate Programs"
               width={600}
               height={400}
@@ -66,7 +66,7 @@ export default function AcademicsPage() {
           {/* PG */}
           <div className="bg-white border border-orange-100 rounded-2xl p-5 sm:p-8 shadow-sm">
             <Image
-              src="/images/pg-program.jpg"
+              src="/pg.jpeg"
               alt="Postgraduate Programs"
               width={600}
               height={400}
@@ -139,7 +139,7 @@ export default function AcademicsPage() {
           </div>
 
           <Image
-            src="/images/classroom.jpg"
+            src="/mba.jpeg"
             alt="Smart Classroom"
             width={600}
             height={400}

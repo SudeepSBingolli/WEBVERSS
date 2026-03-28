@@ -6,19 +6,51 @@ const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const MAX_HISTORY_MESSAGES = 8;
 
 const KEYWORD_RESPONSES = {
-  admission: { reply: '📚 Admissions are open for 2025-26! Visit the Admissions page for more details.', link: '/admissions', linkText: 'Go to Admissions' },
-  placement: { reply: '💼 Check our placements details and statistics. Our students are placed in top companies!', link: '/placements', linkText: 'View Placements' },
-  department: { reply: '🏢 Explore all departments with programs, faculty, and facilities.', link: '/departments', linkText: 'Browse Departments' },
-  contact: { reply: '📞 Get in touch with us through various departments and support teams.', link: '/contact', linkText: 'Contact Us' },
-  alumni: { reply: '👥 Connect with 11,000+ SJBIT alumni across the globe.', link: '/alumni', linkText: 'Visit Alumni' },
-  course: { reply: '📖 Check out our programs under different departments.', link: '/departments', linkText: 'View Programs' },
-  program: { reply: '🎓 Explore our undergraduate, postgraduate, and PhD programs.', link: '/programs', linkText: 'View Programs' },
-  academic: { reply: '📝 Learn about our academic structure, calendar, and policies.', link: '/academics', linkText: 'Academics Info' },
-  campus: { reply: '🏫 Explore our world-class campus facilities and student life.', link: '/campus-life', linkText: 'Campus Life' },
-  research: { reply: '🔬 Discover our research initiatives and innovations.', link: '/research', linkText: 'Research Details' },
-  student: { reply: '👨‍🎓 Resources and information for current students.', link: '/students', linkText: 'Student Portal' },
-  about: { reply: '📖 Learn about SJBIT history, mission, and vision.', link: '/about', linkText: 'About SJBIT' },
-  home: { reply: '🏠 Return to our homepage.', link: '/', linkText: 'Home' }
+  admission: { reply: '📚 Admissions 2025-26 are now open. Get complete guidance on eligibility, documents, deadlines, counseling steps, and seat intake. Our team supports applicants from first query to final admission confirmation.', link: '/admissions', linkText: 'Start Admission Journey' },
+  placement: { reply: '💼 Placements are career-focused with strong recruiter engagement, training support, and interview readiness. Explore outcomes, hiring partners, and opportunities across core, tech, and emerging domains.', link: '/placements', linkText: 'See Placement Highlights' },
+  department: { reply: '🏢 Departments offer domain-specialized learning, modern labs, project mentoring, and industry-aligned curriculum. Compare each branch to choose the best-fit academic and career pathway.', link: '/departments', linkText: 'Explore Departments' },
+  contact: { reply: '📞 Connect with SJBIT instantly for admissions, academics, and student support. Find official contact channels and get quick guidance from the right office without delays.', link: '/contact', linkText: 'Contact SJBIT Team' },
+  alumni: { reply: '👥 SJBIT alumni are making impact across top companies, startups, and research institutions worldwide. Discover the network, mentorship culture, and success journeys that inspire current students.', link: '/alumni', linkText: 'Meet Our Alumni Network' },
+  course: { reply: '📖 Courses are designed for conceptual clarity, practical skills, and employability. Explore curriculum depth, electives, and learning pathways aligned with industry expectations.', link: '/departments', linkText: 'Browse Course Paths' },
+  program: { reply: '🎓 SJBIT offers UG, PG, and research programs with future-ready specializations. Review program structure, outcomes, and academic progression to choose your ideal track.', link: '/programs', linkText: 'View All Programs' },
+  academic: { reply: '📝 Academics at SJBIT are structured for consistency and excellence with planned calendars, evaluation transparency, and strong faculty guidance throughout every semester.', link: '/academics', linkText: 'View Academic Framework' },
+  campus: { reply: '🏫 Campus life blends modern infrastructure, active student communities, and a vibrant learning environment. Explore facilities, experiences, and support systems designed for holistic growth.', link: '/campus-life', linkText: 'Take Campus Tour' },
+  research: { reply: '🔬 Research culture at SJBIT encourages innovation, publications, and solution-building. Explore focus areas, project opportunities, and initiatives that connect ideas with real-world impact.', link: '/research', linkText: 'Discover Research Ecosystem' },
+  student: { reply: '👨‍🎓 Student services include academic support, activity platforms, and development resources. Access tools and opportunities that help you grow beyond the classroom.', link: '/students', linkText: 'Open Student Hub' },
+  about: { reply: '📖 Learn what defines SJBIT: mission, values, institutional journey, and commitment to quality technical education. See why students and families trust this ecosystem.', link: '/about', linkText: 'Know SJBIT Better' },
+  hostel: { reply: '🏠 Hostel life is safe, supportive, and student-friendly with essential amenities and campus connectivity. Explore accommodation information and living support details.', link: '/campus-life', linkText: 'View Hostel Facilities' },
+  fees: { reply: '💰 Get clear fee and payment guidance, including admission-linked details and available support options. Review cost planning information before you apply.', link: '/admissions', linkText: 'Check Fee Information' },
+  scholarship: { reply: '🎯 Scholarship and aid opportunities help deserving students pursue education confidently. Explore available support routes and eligibility directions through Admissions.', link: '/admissions', linkText: 'Explore Scholarship Support' },
+  events: { reply: '🎉 Events at SJBIT include technical fests, workshops, competitions, and cultural showcases that build confidence, creativity, and teamwork.', link: '/campus-life', linkText: 'View Event Life at SJBIT' },
+  clubs: { reply: '🎭 Student clubs power innovation, leadership, and collaboration through technical and non-technical communities. Find where your passion and skills can grow.', link: '/campus-life', linkText: 'Explore Student Clubs' },
+  library: { reply: '📚 Library resources support deep learning with curated collections and academic access support. Discover how students use these resources for coursework and research.', link: '/campus-life', linkText: 'See Library Resources' },
+  sports: { reply: '⚽ Sports culture promotes fitness, discipline, and team spirit with active participation opportunities. Explore facilities and student engagement in athletics.', link: '/campus-life', linkText: 'View Sports Facilities' },
+  faq: { reply: '❓ Get quick answers to common admission, academics, campus, and student-life questions. Ask any specific query and I will guide you to the right section instantly.', link: '/contact', linkText: 'Ask More Questions' },
+  home: { reply: '🏠 Start from home to explore admissions, academics, placements, campus life, and more in one place.', link: '/', linkText: 'Go to Home' }
+};
+
+const KEYWORD_ALIASES = {
+  admission: ['admission', 'admissions', 'apply', 'application', 'enroll', 'enrollment', 'intake', 'eligibility'],
+  placement: ['placement', 'placements', 'recruiter', 'recruiters', 'job', 'jobs', 'career', 'ctc', 'package', 'internship', 'internships'],
+  department: ['department', 'departments', 'branch', 'branches', 'cse', 'ise', 'ece', 'civil', 'mechanical', 'aiml', 'ai-ml', 'ai ml'],
+  contact: ['contact', 'phone', 'email', 'mail', 'support', 'helpdesk', 'address'],
+  alumni: ['alumni', 'alumnus', 'alumna', 'graduate', 'graduates', 'passout', 'passouts'],
+  course: ['course', 'courses', 'curriculum', 'syllabus', 'subjects'],
+  program: ['program', 'programs', 'ug', 'pg', 'phd', 'btech', 'mtech', 'degree'],
+  academic: ['academic', 'academics', 'calendar', 'exam', 'exams', 'semester', 'results', 'attendance'],
+  campus: ['campus', 'infrastructure', 'facility', 'facilities'],
+  research: ['research', 'innovation', 'paper', 'papers', 'publication', 'publications', 'patent', 'patents', 'lab', 'labs'],
+  student: ['student', 'students', 'portal', 'counselling', 'counseling', 'resources'],
+  about: ['about', 'history', 'mission', 'vision', 'profile'],
+  hostel: ['hostel', 'hostels', 'accommodation', 'mess', 'residence'],
+  fees: ['fee', 'fees', 'tuition', 'payment', 'cost'],
+  scholarship: ['scholarship', 'scholarships', 'financial aid', 'aid'],
+  events: ['event', 'events', 'fest', 'fests', 'workshop', 'workshops', 'hackathon', 'hackathons'],
+  clubs: ['club', 'clubs', 'society', 'societies'],
+  library: ['library', 'books', 'journals', 'ebooks', 'e-journal'],
+  sports: ['sport', 'sports', 'game', 'games', 'playground'],
+  faq: ['faq', 'faqs', 'questions', 'common questions'],
+  home: ['home', 'homepage', 'main page']
 };
 
 const ALLOWED_LINKS = new Set([
@@ -52,6 +84,12 @@ Use only this website navigation info:
 - /contact: contact and support
 - / : home page
 
+Additional topic routing guidance:
+- fee/fees/scholarship -> /admissions
+- hostel/library/sports/events/clubs -> /campus-life
+- course/curriculum -> /departments
+- exam/calendar/results -> /academics
+
 Return ONLY strict JSON with this shape:
 {
   "reply": "string",
@@ -76,6 +114,12 @@ function normalizeHistory(history) {
 function findFallback(userMessage) {
   const normalized = String(userMessage || '').toLowerCase();
 
+  for (const [topic, aliases] of Object.entries(KEYWORD_ALIASES)) {
+    if (aliases.some((alias) => normalized.includes(alias))) {
+      return KEYWORD_RESPONSES[topic] || KEYWORD_RESPONSES.contact;
+    }
+  }
+
   for (const [keyword, response] of Object.entries(KEYWORD_RESPONSES)) {
     if (normalized.includes(keyword)) {
       return response;
@@ -83,9 +127,9 @@ function findFallback(userMessage) {
   }
 
   return {
-    reply: 'I can help with admissions, placements, departments, programs, campus life, and contact details. Ask me anything about SJBIT.',
-    link: '/contact',
-    linkText: 'Contact Us'
+    reply: 'I can help with admissions, fees, scholarships, placements, departments, academics, hostel, events, clubs, library, sports, research, alumni, and contact details. Ask any one topic to get a direct answer.',
+    link: '/',
+    linkText: 'Explore Website'
   };
 }
 

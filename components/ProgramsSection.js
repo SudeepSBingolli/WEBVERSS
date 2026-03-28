@@ -114,19 +114,19 @@ const highlights = [
 function ProgramCard({ program, index }) {
   return (
     <article
-      className="group relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-white to-[#FFF7ED] p-6 shadow-sm transition-all duration-300 hover:-translate-y-1.5 hover:border-[#E36A0A] hover:shadow-xl hover:shadow-orange-200/50 animate-fade-in-up"
+      className="group relative overflow-hidden rounded-2xl border border-orange-100 bg-gradient-to-br from-white to-[#FFF7ED] p-6 shadow-sm transition-all duration-300 hover:scale-105 hover:-translate-y-2 hover:border-[#E36A0A] hover:shadow-2xl hover:shadow-orange-300/60 animate-fade-in-up"
       style={{ animationDelay: `${index * 110}ms` }}
     >
       <div className="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full bg-[#E36A0A]/10 blur-2xl transition-opacity duration-300 group-hover:opacity-100 opacity-60" />
 
       <div className="relative flex items-start justify-between gap-3">
         <h3 className="text-xl font-bold text-gray-900 leading-snug">{program.name}</h3>
-        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E36A0A]/10 text-[#E36A0A]">
+        <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#E36A0A]/10 text-[#E36A0A] group-hover:bg-[#E36A0A] group-hover:text-white group-hover:scale-110 transition-all duration-300">
           {program.icon}
         </span>
       </div>
 
-      <p className="relative mt-3 text-sm leading-6 text-gray-600 min-h-[72px]">{program.description}</p>
+      <p className="relative mt-3 text-sm leading-relaxed tracking-wide text-gray-600 min-h-[72px]">{program.description}</p>
 
       <div className="relative mt-5 grid grid-cols-3 gap-2 rounded-xl bg-white/90 p-3 ring-1 ring-orange-100">
         <div>
@@ -151,7 +151,7 @@ function ProgramCard({ program, index }) {
         ))}
       </div>
 
-      <button className="relative mt-6 inline-flex items-center gap-2 rounded-xl border border-[#E36A0A]/30 bg-white px-4 py-2 text-sm font-semibold text-[#E36A0A] transition-all duration-300 hover:border-[#E36A0A] hover:bg-[#E36A0A] hover:text-white hover:shadow-lg hover:shadow-orange-200/60">
+      <button className="relative mt-6 inline-flex items-center gap-2 rounded-xl border border-[#E36A0A]/30 bg-white px-4 py-2 text-sm font-semibold text-[#E36A0A] transition-all duration-300 hover:border-[#E36A0A] hover:bg-[#E36A0A] hover:text-white hover:shadow-lg hover:shadow-orange-200/60 hover:scale-105">
         <Link href={`/departments/${program.url}`}>Explore Program <span aria-hidden="true">→</span></Link>
       </button>
     </article>
@@ -173,10 +173,10 @@ export default function ProgramsSection() {
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center animate-fade-in-up">
           <p className="text-sm font-semibold uppercase tracking-[0.2em] text-[#E36A0A]">Programs</p>
-          <h2 className="mt-3 font-serif text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          <h2 className="mt-3 font-serif text-3xl font-bold tracking-wide text-gray-900 sm:text-4xl">
             Academic Programs at SJBIT
           </h2>
-          <p className="mt-4 text-base leading-7 text-gray-600 sm:text-lg">
+          <p className="mt-4 text-base leading-relaxed tracking-wide text-gray-600 sm:text-lg">
             Explore diverse disciplines designed to shape future innovators and leaders
           </p>
         </div>

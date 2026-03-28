@@ -1,21 +1,22 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { Building2, Users, Award, Globe, Trophy, Medal, BookOpen, Handshake, Lightbulb, TrendingUp, Target, Briefcase } from "lucide-react";
 
 // ── Stats data ─────────────────────────────────────────────────────────────────
 const stats = [
-  { value: 24,    suffix: "+",  label: "Years of Excellence",      icon: "🏛️" },
-  { value: 350,   suffix: "+",  label: "Faculties & Staff",         icon: "👨‍🏫" },
-  { value: 6000,  suffix: "+",  label: "Students on Campus",        icon: "🎓" },
-  { value: 11000, suffix: "+",  label: "Alumni Network",            icon: "🌐" },
-  { value: 91,    suffix: "",   label: "University Ranks",          icon: "🏅" },
-  { value: 15,    suffix: "",   label: "Gold Medals",               icon: "🥇" },
-  { value: 1600,  suffix: "+",  label: "Papers Published",          icon: "📄" },
-  { value: 80,    suffix: "+",  label: "Industry Collaborations",   icon: "🤝" },
-  { value: 75,    suffix: "+",  label: "Patents",                   icon: "💡" },
-  { value: 90,    suffix: "+",  label: "Funded Projects",           icon: "📊" },
-  { value: 95,    suffix: "%",  label: "Placement Rate",            icon: "💼" },
-  { value: 100,   suffix: "+",  label: "Recruiters",                icon: "🏢" },
+  { value: 24,    suffix: "+",  label: "Years of Excellence",      icon: <Building2 className="w-6 h-6" /> },
+  { value: 350,   suffix: "+",  label: "Faculties & Staff",         icon: <Users className="w-6 h-6" /> },
+  { value: 6000,  suffix: "+",  label: "Students on Campus",        icon: <Award className="w-6 h-6" /> },
+  { value: 11000, suffix: "+",  label: "Alumni Network",            icon: <Globe className="w-6 h-6" /> },
+  { value: 91,    suffix: "",   label: "University Ranks",          icon: <Trophy className="w-6 h-6" /> },
+  { value: 15,    suffix: "",   label: "Gold Medals",               icon: <Medal className="w-6 h-6" /> },
+  { value: 1600,  suffix: "+",  label: "Papers Published",          icon: <BookOpen className="w-6 h-6" /> },
+  { value: 80,    suffix: "+",  label: "Industry Collaborations",   icon: <Handshake className="w-6 h-6" /> },
+  { value: 75,    suffix: "+",  label: "Patents",                   icon: <Lightbulb className="w-6 h-6" /> },
+  { value: 90,    suffix: "+",  label: "Funded Projects",           icon: <TrendingUp className="w-6 h-6" /> },
+  { value: 95,    suffix: "%",  label: "Placement Rate",            icon: <Target className="w-6 h-6" /> },
+  { value: 100,   suffix: "+",  label: "Recruiters",                icon: <Briefcase className="w-6 h-6" /> },
 ];
 
 // ── Highlights shown in the intro strip ───────────────────────────────────────
@@ -126,7 +127,7 @@ export default function About() {
 
           {/* Description */}
           <p
-            className={`max-w-2xl mx-auto text-gray-500 text-base md:text-lg leading-relaxed mb-10 transition-all duration-700 delay-200 ${
+            className={`max-w-2xl mx-auto text-gray-500 text-base md:text-lg leading-relaxed tracking-wide mb-10 transition-all duration-700 delay-200 ${
               isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
             }`}
           >
@@ -189,7 +190,9 @@ export default function About() {
 
               <div className="relative z-10">
                 {/* Icon */}
-                <span className="text-2xl mb-3 block">{stat.icon}</span>
+                <div className="mb-3 text-[#E36A0A] group-hover:text-orange-600 transition-colors duration-300">
+                  {stat.icon}
+                </div>
 
                 {/* Animated number */}
                 <p className="text-3xl md:text-4xl font-extrabold text-[#E36A0A] mb-1 leading-none tabular-nums">

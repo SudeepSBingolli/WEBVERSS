@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
+import { Building2, BookOpen, Microscope, Users } from "lucide-react";
 
 /* ───────────────────── Data ───────────────────── */
 
@@ -135,10 +136,10 @@ const additionalFacilities = [
 ];
 
 const campusStats = [
-  { value: "50+", label: "Acre Campus", icon: "🏛️" },
-  { value: "70+", label: "Classrooms", icon: "📚" },
-  { value: "25+", label: "Advanced Labs", icon: "🔬" },
-  { value: "5000+", label: "Students", icon: "🎓" },
+  { value: "50+", label: "Acre Campus", icon: <Building2 className="w-7 h-7" /> },
+  { value: "70+", label: "Classrooms", icon: <BookOpen className="w-7 h-7" /> },
+  { value: "25+", label: "Advanced Labs", icon: <Microscope className="w-7 h-7" /> },
+  { value: "5000+", label: "Students", icon: <Users className="w-7 h-7" /> },
 ];
 
 /* ───────────────────── Scroll Hook ───────────────────── */
@@ -266,7 +267,7 @@ export default function Infrastructure() {
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 {campusStats.map((stat, idx) => (
                   <div key={stat.label} className="text-center group">
-                    <div className="text-3xl mb-2">{stat.icon}</div>
+                    <div className="text-3xl mb-2 text-[#E36A0A] group-hover:scale-110 transition-transform">{stat.icon}</div>
                     <p className="font-extrabold text-2xl sm:text-3xl text-[#1a1a2e] group-hover:text-[#E36A0A] transition-colors">
                       {stat.value}
                     </p>

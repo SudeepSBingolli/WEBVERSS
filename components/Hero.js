@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect, useCallback } from 'react';
+import { Sparkles, ArrowRight, Building2, Briefcase, Award } from 'lucide-react';
 
 const SLIDES = [
   { src: '/campus.jpeg', alt: 'SJBIT Campus Aerial View' },
@@ -42,10 +43,44 @@ const LEADERS = [
   },
 ];
 
+const HERO_METRICS = [
+  { icon: Building2, label: 'Industry Labs', value: '25+' },
+  { icon: Award, label: 'Research Papers', value: '200+' },
+  { icon: Briefcase, label: 'Top Recruiters', value: '120+' },
+];
+
 export default function Hero() {
   const [current, setCurrent] = useState(0);
+  const [persona, setPersona] = useState('student');
   const [failedSlides, setFailedSlides] = useState(new Set());
   const [failedGallery, setFailedGallery] = useState(new Set());
+
+  const personaContent = {
+    student: {
+      tag: 'For Students',
+      subtitle: 'Choose the right program, build skills, and secure strong career outcomes.',
+      primaryLabel: 'Explore Programs',
+      primaryHref: '/programs',
+      secondaryLabel: 'Scholarship & Fees',
+      secondaryHref: '/admissions'
+    },
+    parent: {
+      tag: 'For Parents',
+      subtitle: 'Track academic quality, student safety, mentorship, and placement readiness.',
+      primaryLabel: 'Why SJBIT',
+      primaryHref: '/about',
+      secondaryLabel: 'Talk to Counselor',
+      secondaryHref: '/contact'
+    },
+    recruiter: {
+      tag: 'For Recruiters',
+      subtitle: 'Connect with a future-ready talent pool trained in technical and professional skills.',
+      primaryLabel: 'Placement Ecosystem',
+      primaryHref: '/placements',
+      secondaryLabel: 'Department Strengths',
+      secondaryHref: '/departments'
+    }
+  };
 
   const nextSlide = useCallback(() => {
     setCurrent((prev) => (prev + 1) % SLIDES.length);
@@ -103,31 +138,72 @@ export default function Hero() {
             className="order-2 space-y-6 lg:order-1"
             style={{ animation: 'slideInLeft .8s ease-out both' }}
           >
-            <p className="font-serif text-lg italic text-[#E36A0A] md:text-xl">
-              Jai Shri Gurudev
-            </p>
+            <div className="inline-flex items-center gap-2 rounded-full border border-[#E36A0A]/30 bg-[#FFF7ED] px-4 py-1.5 text-sm font-semibold text-[#C44F07] shadow-sm">
+              <Sparkles className="h-4 w-4" />
+              Admissions Open 2026-27
+            </div>
+
+            <p className="font-serif text-lg italic text-[#E36A0A] md:text-xl">Jai Shri Gurudev</p>
 
             <h1 className="text-4xl font-extrabold leading-[1.1] tracking-tight text-gray-900 md:text-5xl lg:text-[3.25rem]">
-              Empowering Minds.
+              Building Future Engineers for
               <br />
-              Shaping the Future.
+              <span className="bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] bg-clip-text text-transparent">Real-World Innovation</span>
             </h1>
 
-            <p className="text-xl font-semibold text-[#E36A0A]">
-              SJB Institute of Technology, Bengaluru
+            <p className="text-lg font-semibold text-[#E36A0A] tracking-wide">
+              At SJBIT, students build solutions, careers, and impact
             </p>
 
+            <div className="flex flex-wrap gap-2">
+              {[
+                { id: 'student', label: 'Student' },
+                { id: 'parent', label: 'Parent' },
+                { id: 'recruiter', label: 'Recruiter' },
+              ].map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setPersona(item.id)}
+                  className={`rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-wider transition ${
+                    persona === item.id
+                      ? 'bg-[#E36A0A] text-white'
+                      : 'bg-white text-gray-600 border border-gray-200 hover:border-[#E36A0A]/40 hover:text-[#E36A0A]'
+                  }`}
+                >
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <p className="rounded-xl border border-[#F59E0B]/20 bg-[#FFF7ED] px-4 py-3 text-sm font-medium text-gray-700">
+              <span className="mr-2 font-extrabold text-[#C44F07]">{personaContent[persona].tag}:</span>
+              {personaContent[persona].subtitle}
+            </p>
+
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {HERO_METRICS.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div key={item.label} className="rounded-2xl border border-[#F59E0B]/25 bg-white/80 p-3 shadow-sm">
+                    <div className="mb-1 flex items-center gap-2 text-[#E36A0A]">
+                      <Icon className="h-4 w-4" />
+                      <span className="text-xs font-semibold uppercase tracking-wider">{item.label}</span>
+                    </div>
+                    <p className="text-lg font-bold text-gray-900">{item.value}</p>
+                  </div>
+                );
+              })}
+            </div>
+
             <p className="max-w-xl text-base leading-relaxed text-gray-600 md:text-lg">
-              To provide learning opportunities that foster ethical values,
-              intellectual growth in science and technology, and social
-              responsibility, shaping students into responsible contributors to
-              society.
+              SJB Institute of Technology combines academic excellence with hands-on learning, internships, and strong industry mentorship so graduates are job-ready and innovation-ready from day one.
             </p>
 
             <div className="border-l-4 border-[#F59E0B] pl-4">
               <p className="font-medium italic text-gray-800">
-                Vision: To become a recognized technical education center with a
-                global perspective.
+                Vision: To become a globally respected technical institution that
+                nurtures innovation, leadership, and social responsibility.
               </p>
             </div>
 
@@ -155,15 +231,17 @@ export default function Hero() {
               ))}
             </div>
 
-            <div className="flex flex-wrap gap-4 pt-4">
-              <Link href="/departments">
-                <button className="rounded-2xl bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] px-7 py-3.5 font-semibold text-white shadow-lg shadow-orange-200 transition-all hover:-translate-y-0.5 hover:shadow-xl">
-                  Explore Programs
+            <div className="flex flex-wrap gap-4 pt-6">
+              <Link href={personaContent[persona].primaryHref}>
+                <button className="group rounded-2xl bg-gradient-to-r from-[#E36A0A] to-[#F59E0B] px-8 py-4 font-semibold text-white shadow-lg shadow-orange-300/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-orange-400/80 hover:scale-105 flex items-center gap-2">
+                  <span>{personaContent[persona].primaryLabel}</span>
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
-              <Link href="/campus-life">
-                <button className="rounded-2xl border-2 border-[#E36A0A] px-7 py-3.5 font-semibold text-[#E36A0A] transition-all hover:bg-[#FFF7ED]">
-                  Visit Campus
+              <Link href={personaContent[persona].secondaryHref}>
+                <button className="group rounded-2xl border-2 border-[#E36A0A] px-8 py-4 font-semibold text-[#E36A0A] transition-all duration-300 hover:bg-[#FFF7ED] hover:scale-105 hover:shadow-lg hover:shadow-orange-200/60 flex items-center gap-2">
+                  <span>{personaContent[persona].secondaryLabel}</span>
+                  <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </button>
               </Link>
             </div>
